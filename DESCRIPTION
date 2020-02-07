@@ -1,11 +1,57 @@
-Package: ithimbogota
-Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Package: ithimr
+Title: Integrated Transport and Health Impact Model
+Version: 0.1
+Authors@R: c(person(given = "Rob",
+             family = "Johnson",
+             role = c("aut", "cre"),
+             email = "rob.johnson@mrc-bsu.cam.ac.uk"),
+      person(given = "Ali",
+             family = "Abbas",
+             role = "aut",
+             email = "aa797@medschl.cam.ac.uk")
+             )
+Description: Modelling the impact of transport choices on population health.
+Depends: R (>= 3.1.0),
+    dplyr,
+    tidyr,
+    readr,
+    haven,
+    ggplot2,
+    plotly,
+    ReIns,
+    truncnorm,
+    distr,
+    pracma,
+    data.table,
+    mgcv,
+    parallel,
+    splines,
+    BMS,
+    distr,
+    MASS,
+    stringr
 License: What license is it under?
-Encoding: UTF-8
 LazyData: true
+Imports:
+    dplyr,
+    tidyr,
+    readr,
+    haven,
+    ggplot2,
+    plotly,
+    ReIns,
+    truncnorm,
+    distr,
+    pracma,
+    data.table,
+    mgcv,
+    parallel,
+    splines,
+    BMS,
+    distr,
+    MASS,
+    stringr
+Suggests:
+    testthat,
+    earth
+RoxygenNote: 7.0.2
