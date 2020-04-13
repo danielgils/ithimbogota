@@ -242,6 +242,10 @@ create_all_scenarios <- function(trip_set){
     ###############################################################
     # Scenario 1: mujeres hicieran la misma proporción de viajes que los hombres
     rd_list <- list()
+
+    trip_set$limitacion <- rowSums(trip_set[,c("dif_fisica_1", "dif_fisica_2",
+                                               "dif_fisica_3", "dif_fisica_4"
+                                               )])
     rdr_full <- trip_set
 
     rd_list[[1]] <- rdr_full # Baseline
@@ -272,58 +276,65 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of bus trips to bicycle on any distance
     source_modes <- c('bus')
     target_modes <- c('bicycle')
-    b2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 1',
+    b2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 1',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[2]*-1)
 
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
-    c2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 1',
+    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 1',
                                  source_modes = source_modes,
                                  combined_modes = T,
                                  target_modes = target_modes,
-                                 source_distance_cats = DIST_CAT,
+                                 source_distance_cats = DIST_CAT[-3],
                                  source_trips = diff_trips[3]*-1)
 
     # Redistribution of motorcycle trips to bicycle on any distance
     source_modes <- c('motorcycle')
     target_modes <- c('bicycle')
-    m2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 1',
+    m2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 1',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[4]*-1)
 
     # Redistribution of taxi trips to bicycle on any distance
     source_modes <- c('taxi')
     target_modes <- c('bicycle')
-    t2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 1',
+    t2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 1',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[5]*-1)
 
     # Redistribution of walking trips to bicycle on any distance
     source_modes <- c('walking')
     target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 1',
+    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 1',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[6]*-1)
 
-    redistribute_trips <- rbind(b2bb_trips, c2bb_trips, m2bb_trips, t2bb_trips,
-                                w2bb_trips)
+    redistribute_trips <- rbind(b2bb_trips, c2bb_trips, m2bb_trips,
+                                t2bb_trips, w2bb_trips)
 
     # Update selected rows for mode and duration
     rdr$trip_mode[match(redistribute_trips$id, rdr$id)] <- redistribute_trips$trip_mode
@@ -369,54 +380,61 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of bus trips to bicycle on any distance
     source_modes <- c('bus')
     target_modes <- c('bicycle')
-    b2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    b2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[2]*-1)
 
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
-    c2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[3]*-1)
 
     # Redistribution of motorcycle trips to bicycle on any distance
     source_modes <- c('motorcycle')
     target_modes <- c('bicycle')
-    m2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    m2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[4]*-1)
 
     # Redistribution of taxi trips to bicycle on any distance
     source_modes <- c('taxi')
     target_modes <- c('bicycle')
-    t2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    t2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[5]*-1)
 
     # Redistribution of walking trips to bicycle on any distance
     source_modes <- c('walking')
     target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[6]*-1)
 
     redistribute_trips <- rbind(b2bb_trips, c2bb_trips, m2bb_trips, t2bb_trips,
@@ -432,7 +450,8 @@ create_all_scenarios <- function(trip_set){
     # Save updated trips in other object
     rdr_1 <- rdr
 
-    # Estrato 3
+    #####
+    ### Estrato 3
     # subset of trips that are going to be changed
     rdr <- trip_set[trip_set$estrato == 3,]
 
@@ -454,54 +473,61 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of bus trips to bicycle on any distance
     source_modes <- c('bus')
     target_modes <- c('bicycle')
-    b2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    b2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[2]*-1)
 
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
-    c2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[3]*-1)
 
     # Redistribution of motorcycle trips to bicycle on any distance
     source_modes <- c('motorcycle')
     target_modes <- c('bicycle')
-    m2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    m2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[4]*-1)
 
     # Redistribution of taxi trips to bicycle on any distance
     source_modes <- c('taxi')
     target_modes <- c('bicycle')
-    t2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    t2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[5]*-1)
 
     # Redistribution of walking trips to bicycle on any distance
     source_modes <- c('walking')
     target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[6]*-1)
 
     redistribute_trips <- rbind(b2bb_trips, c2bb_trips, m2bb_trips, t2bb_trips,
@@ -517,6 +543,7 @@ create_all_scenarios <- function(trip_set){
     # Save updated trips in other object
     rdr_3 <- rdr
 
+    ####
     # Estrato 4
     # subset of trips that are going to be changed
     rdr <- trip_set[trip_set$estrato == 4,]
@@ -539,54 +566,61 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of bus trips to bicycle on any distance
     source_modes <- c('bus')
     target_modes <- c('bicycle')
-    b2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    b2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[2]*-1)
 
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
-    c2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[3]*-1)
 
     # Redistribution of motorcycle trips to bicycle on any distance
     source_modes <- c('motorcycle')
     target_modes <- c('bicycle')
-    m2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    m2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[4]*-1)
 
     # Redistribution of taxi trips to bicycle on any distance
     source_modes <- c('taxi')
     target_modes <- c('bicycle')
-    t2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    t2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[5]*-1)
 
     # Redistribution of walking trips to bicycle on any distance
     source_modes <- c('walking')
     target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[6]*-1)
 
     redistribute_trips <- rbind(b2bb_trips, c2bb_trips, m2bb_trips, t2bb_trips,
@@ -602,6 +636,7 @@ create_all_scenarios <- function(trip_set){
     # Save updated trips in other object
     rdr_4 <- rdr
 
+    #####
     # Estrato 5
     # subset of trips that are going to be changed
     rdr <- trip_set[trip_set$estrato == 5,]
@@ -624,54 +659,61 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of bus trips to bicycle on any distance
     source_modes <- c('bus')
     target_modes <- c('bicycle')
-    b2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    b2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[2]*-1)
 
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
-    c2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[3]*-1)
 
     # Redistribution of motorcycle trips to bicycle on any distance
     source_modes <- c('motorcycle')
     target_modes <- c('bicycle')
-    m2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    m2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[4]*-1)
 
     # Redistribution of taxi trips to bicycle on any distance
     source_modes <- c('taxi')
     target_modes <- c('bicycle')
-    t2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    t2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[5]*-1)
 
     # Redistribution of walking trips to bicycle on any distance
     source_modes <- c('walking')
     target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[6]*-1)
 
     redistribute_trips <- rbind(b2bb_trips, c2bb_trips, m2bb_trips, t2bb_trips,
@@ -709,54 +751,61 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of bus trips to bicycle on any distance
     source_modes <- c('bus')
     target_modes <- c('bicycle')
-    b2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    b2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[2]*-1)
 
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
-    c2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[3]*-1)
 
     # Redistribution of motorcycle trips to bicycle on any distance
     source_modes <- c('motorcycle')
     target_modes <- c('bicycle')
-    m2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    m2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[4]*-1)
 
     # Redistribution of taxi trips to bicycle on any distance
     source_modes <- c('taxi')
     target_modes <- c('bicycle')
-    t2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    t2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[5]*-1)
 
     # Redistribution of walking trips to bicycle on any distance
     source_modes <- c('walking')
     target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 2',
+    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 2',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[6]*-1)
 
     redistribute_trips <- rbind(b2bb_trips, c2bb_trips, m2bb_trips, t2bb_trips,
@@ -808,10 +857,17 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
-    c2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 3',
+    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 3',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
@@ -864,10 +920,17 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
-    c2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 4',
+    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 4',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
@@ -877,11 +940,11 @@ create_all_scenarios <- function(trip_set){
     # Redistribution of motorcycle trips to bicycle on any distance
     source_modes <- c('motorcycle')
     target_modes <- c('bicycle')
-    m2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 4',
+    m2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 4',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[4]*-1)
 
     redistribute_trips <- rbind(c2bb_trips, m2bb_trips)
@@ -897,9 +960,8 @@ create_all_scenarios <- function(trip_set){
     rdr_full$scenario <- "Scenario 4"
     rd_list[[5]] <- rdr_full
 
-    cbind(table(rd_list[[5]]$trip_mode),
-          prop.table(table(rd_list[[5]]$trip_mode)))
-
+    # cbind(table(rd_list[[5]]$trip_mode),
+    #       prop.table(table(rd_list[[5]]$trip_mode)))
 
     ###############################################################
     # Scenario 5: Duplicar viajes en bici, todos vienen del transporte publico
@@ -929,10 +991,17 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of bus trips to bicycle on any distance
     source_modes <- c('bus')
     target_modes <- c('bicycle')
-    b2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 5',
+    b2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 5',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
@@ -981,14 +1050,21 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
+    # Subset dataset with restrictions
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+              (age >= 16 & age <= 62) &
+              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
+              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
+              (limitacion == 0))
+
     # Redistribution of walking trips to bicycle on any distance
     source_modes <- c('walking')
     target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr, scen_name = 'Scenario 6',
+    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 6',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT,
+                                  source_distance_cats = DIST_CAT[-3],
                                   source_trips = diff_trips[6]*-1)
 
     redistribute_trips <- w2bb_trips

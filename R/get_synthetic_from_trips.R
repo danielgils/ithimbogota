@@ -20,6 +20,16 @@ get_synthetic_from_trips <- function(){
                              age=TRIP_SET$age,
                              sex=TRIP_SET$sex,
                              estrato = TRIP_SET$estrato,
+                             dif_fisica_1 = TRIP_SET$p8_id_dificultad_fisica_1,
+                             dif_fisica_2 = TRIP_SET$p8_id_dificultad_fisica_2,
+                             dif_fisica_3 = TRIP_SET$p8_id_dificultad_fisica_3,
+                             dif_fisica_4 = TRIP_SET$p8_id_dificultad_fisica_4,
+                             dif_fisica_5 = TRIP_SET$p8_id_dificultad_fisica_5,
+                             dif_fisica_6 = TRIP_SET$p8_id_dificultad_fisica_6,
+                             dif_fisica_7 = TRIP_SET$p8_id_dificultad_fisica_7,
+                             motivo = TRIP_SET$p17_Id_motivo_viaje,
+                             hora_inicio = TRIP_SET$hora_inicio_viaje,
+                             hora_fin = TRIP_SET$p31_hora_llegada,
                              stringsAsFactors = F)
   } else {
     raw_trip_set <- data.frame(trip_id=TRIP_SET$trip_id,
