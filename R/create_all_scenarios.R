@@ -240,12 +240,9 @@ create_all_scenarios <- function(trip_set){
   if (CITY == 'bogota') {
 
     ###############################################################
-    # Scenario 1: mujeres hicieran la misma proporción de viajes que los hombres
+    # Scenario 1: mujeres hicieran la misma proporcion de viajes que los hombres
     rd_list <- list()
 
-    trip_set$limitacion <- rowSums(trip_set[,c("dif_fisica_1", "dif_fisica_2",
-                                               "dif_fisica_3", "dif_fisica_4"
-                                               )])
     rdr_full <- trip_set
 
     rd_list[[1]] <- rdr_full # Baseline
@@ -864,6 +861,12 @@ create_all_scenarios <- function(trip_set){
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
               (limitacion == 0))
 
+    # Define weights to give priority to short and medium distances
+    rdr2$w <- NA
+    rdr2$w[rdr2$trip_distance_cat == "0-6 km"] <- 10
+    rdr2$w[rdr2$trip_distance_cat == "7-15 km"] <- 10
+    rdr2$w[rdr2$trip_distance_cat == "16+ km"] <- 1
+
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
@@ -926,6 +929,12 @@ create_all_scenarios <- function(trip_set){
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
               (limitacion == 0))
+
+    # Define weights to give priority to short and medium distances
+    rdr2$w <- NA
+    rdr2$w[rdr2$trip_distance_cat == "0-6 km"] <- 10
+    rdr2$w[rdr2$trip_distance_cat == "7-15 km"] <- 10
+    rdr2$w[rdr2$trip_distance_cat == "16+ km"] <- 1
 
     # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
@@ -997,6 +1006,12 @@ create_all_scenarios <- function(trip_set){
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
               (limitacion == 0))
+
+    # Define weights to give priority to short and medium distances
+    rdr2$w <- NA
+    rdr2$w[rdr2$trip_distance_cat == "0-6 km"] <- 10
+    rdr2$w[rdr2$trip_distance_cat == "7-15 km"] <- 10
+    rdr2$w[rdr2$trip_distance_cat == "16+ km"] <- 1
 
     # Redistribution of bus trips to bicycle on any distance
     source_modes <- c('bus')
