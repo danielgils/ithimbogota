@@ -260,12 +260,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.08320987654321,
-                              0.31483380816714,
-                              0.12560303893637,
-                              0.01912630579297,
-                              0.05394112060779,
-                              0.40328584995252))
+    new_trips <- round(tt * c(0.08327304572973,
+                              0.31468225259871,
+                              0.12532840878803,
+                              0.01913338156342,
+                              0.05380192666489,
+                              0.40378098465522))
 
     # Difference of trips between baseline and scenario 1
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -274,7 +274,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -367,12 +367,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.06478094773632,
-                              0.38925465333659,
-                              0.03966512232789,
-                              0.05405185727058,
-                              0.01715028854751,
-                              0.43509713078111))
+    new_trips <- round(tt * c(0.06476578411405,
+                              0.38932790224033,
+                              0.03934826883910,
+                              0.05409368635438,
+                              0.01694501018330,
+                              0.43560081466395))
 
     # Difference of trips between baseline and scenario 2
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -381,7 +381,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -460,12 +460,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.06475496198422,
-                              0.31332403109605,
-                              0.15126576871601,
-                              0.04399578551699,
-                              0.05225389412535,
-                              0.37440555856138))
+    new_trips <- round(tt * c(0.06474470699163,
+                              0.31338038229664,
+                              0.15077573644961,
+                              0.04405840166862,
+                              0.05188719677705,
+                              0.37515357581645))
 
     # Difference of trips between baseline and scenario 2
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -474,7 +474,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -553,12 +553,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.06473755047106,
-                              0.26029609690444,
-                              0.30282637954240,
-                              0.01749663526245,
-                              0.09185733512786,
-                              0.26278600269179))
+    new_trips <- round(tt * c(0.06471421823335,
+                              0.25980160604629,
+                              0.30278696268304,
+                              0.01747756258857,
+                              0.09177407382414,
+                              0.26337809568797))
 
     # Difference of trips between baseline and scenario 2
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -567,7 +567,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -646,12 +646,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.06467926537131,
-                              0.17913228639872,
-                              0.42134681927070,
-                              0.01916422677668,
-                              0.09049773755656,
-                              0.22517966462603))
+    new_trips <- round(tt * c(0.06476545842217,
+                              0.17937100213220,
+                              0.42057569296375,
+                              0.01918976545842,
+                              0.09035181236674,
+                              0.22547974413646))
 
     # Difference of trips between baseline and scenario 2
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -660,7 +660,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -738,12 +738,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.06473489519112,
-                              0.10789149198520,
-                              0.44358816276202,
-                              0.01202219482121,
-                              0.08477188655980,
-                              0.28699136868064))
+    new_trips <- round(tt * c(0.06485484867202,
+                              0.10809141445337,
+                              0.44379246448425,
+                              0.01142680667078,
+                              0.08431130327363,
+                              0.28752316244595))
 
     # Difference of trips between baseline and scenario 2
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -752,7 +752,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -846,12 +846,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.10325623400733,
-                              0.31955245597311,
-                              0.10440018062315,
-                              0.04491495660027,
-                              0.04970147007175,
-                              0.37817470272440))
+    new_trips <- round(tt * c(0.10327060481031,
+                              0.31946261447117,
+                              0.10407567676361,
+                              0.04491295159505,
+                              0.04941129113415,
+                              0.37886686122572))
 
     # Difference of trips between baseline and scenario 3
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -860,7 +860,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -917,12 +917,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.10325623400733,
-                              0.31955245597311,
-                              0.11687321258341,
-                              0.03244192464001,
-                              0.04970147007175,
-                              0.37817470272440))
+    new_trips <- round(tt * c(0.10327060481031,
+                              0.31946261447117,
+                              0.11651403844219,
+                              0.03247458991647,
+                              0.04941129113415,
+                              0.37886686122572))
 
     # Difference of trips between baseline and scenario 3
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -931,7 +931,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -996,12 +996,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.10325623400733,
-                              0.26792433896945,
-                              0.15602829762681,
-                              0.04491495660027,
-                              0.04970147007175,
-                              0.37817470272440))
+    new_trips <- round(tt * c(0.10327060481031,
+                              0.26782731206602,
+                              0.15571097916876,
+                              0.04491295159505,
+                              0.04941129113415,
+                              0.37886686122572))
 
     # Difference of trips between baseline and scenario 3
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -1010,7 +1010,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -1063,12 +1063,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.10325623400733,
-                              0.31955245597311,
-                              0.15602829762681,
-                              0.04491495660027,
-                              0.04970147007175,
-                              0.32654658572074))
+    new_trips <- round(tt * c(0.10327060481031,
+                              0.31946261447117,
+                              0.15571097916876,
+                              0.04491295159505,
+                              0.04941129113415,
+                              0.32723155882057))
 
     # Difference of trips between baseline and scenario 3
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -1077,7 +1077,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
@@ -1124,12 +1124,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.07084663215668,
-                              0.35653028937791,
-                              0.19185888469569,
-                              0.07156440601676,
-                              0.05240178636348,
-                              0.25679800138949))
+    new_trips <- round(tt * c(0.05121642758680,
+                              0.28518396888884,
+                              0.18533738859104,
+                              0.05345833162812,
+                              0.04901045789343,
+                              0.37579342541177))
 
     # Difference of trips between baseline and scenario 7
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -1137,73 +1137,61 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
-    # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
-              (age >= 16 & age <= 62) &
-              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
-              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
-              (limitacion == 0))
-
-    # Redistribution of walking trips to bicycle on short distance
+    # Redistribution of walking trips to motorcycle on medium and large distance
     source_modes <- c('walking')
-    target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 7',
+    target_modes <- c('motorcycle')
+    w2m_trips <- create_scenario(rdr, scen_name = 'Scenario 7',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT[1],
-                                  source_trips = diff_trips[1])
+                                  source_distance_cats = DIST_CAT[-1],
+                                  source_trips = diff_trips[6]*-1)
 
-    # Redistribution of walking trips to bus on any distance
-    source_modes <- c('walking')
-    target_modes <- c('bus')
-    # bus trips shouldnt be the same as those chosen to be bicycle
-    rdr3 <- rdr[-match(w2bb_trips$id,rdr$id),]
-    w2b_trips <- create_scenario(rdr3, scen_name = 'Scenario 7',
+    # Redistribution of taxi trips to motorcycle on any distance
+    source_modes <- c('taxi')
+    target_modes <- c('motorcycle')
+    t2m_trips <- create_scenario(rdr, scen_name = 'Scenario 7',
+                                 source_modes = source_modes,
+                                 combined_modes = T,
+                                 target_modes = target_modes,
+                                 source_distance_cats = DIST_CAT,
+                                 source_trips = diff_trips[5]*-1)
+
+    # Redistribution of bicycle trips to motorcycle on any distance
+    source_modes <- c('bicycle')
+    target_modes <- c('motorcycle')
+    bb2m_trips <- create_scenario(rdr, scen_name = 'Scenario 7',
+                                 source_modes = source_modes,
+                                 combined_modes = T,
+                                 target_modes = target_modes,
+                                 source_distance_cats = DIST_CAT,
+                                 source_trips = diff_trips[1]*-1)
+
+    # Redistribution of bus trips to car on any distance
+    source_modes <- c('bus')
+    target_modes <- c('car')
+    b2c_trips <- create_scenario(rdr, scen_name = 'Scenario 7',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
                                   source_distance_cats = DIST_CAT,
-                                  source_trips = diff_trips[2])
+                                  source_trips = diff_trips[3])
 
-    # Redistribution of walking trips to car on any distance
-    source_modes <- c('walking')
-    target_modes <- c('car')
-    # car trips shouldnt be the same as those chosen to be bus
-    rdr4 <- rdr3[-match(w2b_trips$id,rdr3$id),]
-    w2c_trips <- create_scenario(rdr4, scen_name = 'Scenario 7',
-                                 source_modes = source_modes,
-                                 combined_modes = T,
-                                 target_modes = target_modes,
-                                 source_distance_cats = DIST_CAT,
-                                 source_trips = diff_trips[3])
-
-    # Redistribution of walking trips to motorcycle on any distance
-    source_modes <- c('walking')
+    # Redistribution of bus trips to motorcycle on any distance
+    source_modes <- c('bus')
     target_modes <- c('motorcycle')
-    # motorcycle trips shouldnt be the same as those chosen to be car
-    rdr5 <- rdr4[-match(w2c_trips$id,rdr4$id),]
-    w2m_trips <- create_scenario(rdr5, scen_name = 'Scenario 7',
+    remaining_m <- diff_trips[4] + diff_trips[6] + diff_trips[5] + diff_trips[1]
+    rdr2 <- rdr[-match(b2c_trips$id,rdr$id),]
+    b2m_trips <- create_scenario(rdr2, scen_name = 'Scenario 7',
                                  source_modes = source_modes,
                                  combined_modes = T,
                                  target_modes = target_modes,
                                  source_distance_cats = DIST_CAT,
-                                 source_trips = diff_trips[4])
+                                 source_trips = remaining_m)
 
-    # Redistribution of walking trips to taxi on any distance
-    source_modes <- c('walking')
-    target_modes <- c('taxi')
-    # taxi trips shouldnt be the same as those chosen to be motorcycle
-    rdr6 <- rdr5[-match(w2m_trips$id,rdr5$id),]
-    w2t_trips <- create_scenario(rdr6, scen_name = 'Scenario 7',
-                                 source_modes = source_modes,
-                                 combined_modes = T,
-                                 target_modes = target_modes,
-                                 source_distance_cats = DIST_CAT,
-                                 source_trips = diff_trips[5])
 
-    redistribute_trips <- rbind(w2bb_trips, w2b_trips, w2c_trips, w2m_trips,
-                                w2t_trips)
+    redistribute_trips <- rbind(w2m_trips, t2m_trips, bb2m_trips, b2c_trips,
+                                b2m_trips)
 
     # Update selected rows for mode and duration
     rdr$trip_mode[match(redistribute_trips$id, rdr$id)] <- redistribute_trips$trip_mode
@@ -1216,8 +1204,8 @@ create_all_scenarios <- function(trip_set){
     rdr_full$scenario <- "Scenario 7"
     rd_list[[8]] <- rdr_full
 
-    rm(rdr_full, rdr, tt, new_trips, diff_trips, rdr2, w2bb_trips, rdr3,
-       w2b_trips, rdr4, w2c_trips, rdr5, w2m_trips, rdr6, w2t_trips,
+    rm(rdr_full, rdr, tt, new_trips, diff_trips, rdr2, w2m_trips, t2m_trips,
+       bb2m_trips, b2c_trips, b2m_trips, remaining_m,
        redistribute_trips, source_modes, target_modes)
 
     ###############################################################
@@ -1235,12 +1223,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.07625786422495,
-                              0.42640211478749,
-                              0.12907060941088,
-                              0.04814403831942,
-                              0.04371326265912,
-                              0.27641211059814))
+    new_trips <- round(tt * c(0.05500569514238,
+                              0.34031490787270,
+                              0.12440603015075,
+                              0.03588341708543,
+                              0.04079329983250,
+                              0.40359664991625))
 
     # Difference of trips between baseline and scenario 7
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -1248,81 +1236,80 @@ create_all_scenarios <- function(trip_set){
     # Create new id to avoid duplicates at the end of the redistribution
     rdr$id <- 1:nrow(rdr)
 
-    # Redistribution of walking trips to bus on any distance
-    source_modes <- c('walking')
-    target_modes <- c('bus')
-    w2b_trips <- create_scenario(rdr, scen_name = 'Scenario 8',
-                                 source_modes = source_modes,
-                                 combined_modes = T,
-                                 target_modes = target_modes,
-                                 source_distance_cats = DIST_CAT,
-                                 source_trips = diff_trips[6]*-1)
-
-    # Redistribution of taxi trips to bus on any distance
-    source_modes <- c('taxi')
-    target_modes <- c('bus')
-    t2b_trips <- create_scenario(rdr, scen_name = 'Scenario 8',
-                                 source_modes = source_modes,
-                                 combined_modes = T,
-                                 target_modes = target_modes,
-                                 source_distance_cats = DIST_CAT,
-                                 source_trips = diff_trips[6] + diff_trips[2])
-
-    # Redistribution of taxi trips to bicycle on short and medium distance
-    source_modes <- c('taxi')
-    target_modes <- c('bicycle')
-    remaining_t <- (diff_trips[5] + diff_trips[6] + diff_trips[2])*-1
-
-    # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
-              (age >= 16 & age <= 62) &
-              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
-              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
-              (limitacion == 0))
-
-    # bicycle trips shouldnt be the same as those chosen to be bus
-    rdr3 <- rdr2[-match(t2b_trips$id,rdr2$id)[!is.na(match(t2b_trips$id,rdr2$id))],]
-
-    t2bb_trips <- create_scenario(rdr3, scen_name = 'Scenario 8',
-                                 source_modes = source_modes,
-                                 combined_modes = T,
-                                 target_modes = target_modes,
-                                 source_distance_cats = DIST_CAT[-3],
-                                 source_trips = remaining_t)
-
-    # Redistribution of car trips to bicycle on short and medium distance
+    # Redistribution of car trips to bicycle on any distance
     source_modes <- c('car')
     target_modes <- c('bicycle')
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
               (limitacion == 0))
 
     c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 8',
-                                  source_modes = source_modes,
-                                  combined_modes = T,
-                                  target_modes = target_modes,
-                                  source_distance_cats = DIST_CAT[-3],
-                                  source_trips = diff_trips[1] - remaining_t)
+                                 source_modes = source_modes,
+                                 combined_modes = T,
+                                 target_modes = target_modes,
+                                 source_distance_cats = DIST_CAT[-3],
+                                 source_trips = diff_trips[1])
 
-    # Redistribution of car trips to motorcycle on any distance
+    # Redistribution of car trips to bus on any distance
     source_modes <- c('car')
-    target_modes <- c('motorcycle')
-    remaining_c <- (diff_trips[3] + diff_trips[1] - remaining_t)*-1
-    # motorcycle trips shouldnt be the same as those chosen to be car
-    rdr3 <- rdr2[-match(c2bb_trips$id,rdr2$id),]
-    c2m_trips <- create_scenario(rdr3, scen_name = 'Scenario 8',
+    target_modes <- c('bus')
+    # bus trips shouldnt be the same as those chosen to be bicycle
+    rdr3 <- rdr[-match(c2bb_trips$id,rdr$id),]
+    c2b_trips <- create_scenario(rdr3, scen_name = 'Scenario 8',
                                  source_modes = source_modes,
                                  combined_modes = T,
                                  target_modes = target_modes,
                                  source_distance_cats = DIST_CAT,
+                                 source_trips = diff_trips[2])
+
+    # Redistribution of car trips to walk on short distance
+    source_modes <- c('car')
+    target_modes <- c('walking')
+    remaining_c <- (diff_trips[3] + diff_trips[1] + diff_trips[2])*-1
+    # walking trips shouldnt be the same as those chosen to be bicycle
+    rdr4 <- rdr3[-match(c2b_trips$id,rdr3$id),]
+    c2w_trips <- create_scenario(rdr4, scen_name = 'Scenario 8',
+                                 source_modes = source_modes,
+                                 combined_modes = T,
+                                 target_modes = target_modes,
+                                 source_distance_cats = DIST_CAT[1],
                                  source_trips = remaining_c)
 
-    redistribute_trips <- rbind(w2b_trips, t2b_trips, t2bb_trips, c2bb_trips,
-                                c2m_trips)
+    # Redistribution of motorcycle trips to walk on short distance
+    source_modes <- c('motorcycle')
+    target_modes <- c('walking')
+
+    # Define weights to give priority to short and medium distances
+    rdr5 <- rdr
+    rdr5$w <- NA
+    rdr5$w[rdr2$trip_distance_cat == "0-6 km"] <- 100
+    rdr5$w[rdr2$trip_distance_cat == "7-15 km"] <- 10
+    rdr5$w[rdr2$trip_distance_cat == "16+ km"] <- 1
+
+    m2w_trips <- create_scenario(rdr5, scen_name = 'Scenario 8',
+                                 source_modes = source_modes,
+                                 combined_modes = T,
+                                 target_modes = target_modes,
+                                 source_distance_cats = DIST_CAT[-3],
+                                 source_trips = diff_trips[4]*-1)
+
+    # Redistribution of taxi trips to walk on short distance
+    source_modes <- c('taxi')
+    target_modes <- c('walking')
+    t2w_trips <- create_scenario(rdr5, scen_name = 'Scenario 8',
+                                 source_modes = source_modes,
+                                 combined_modes = T,
+                                 target_modes = target_modes,
+                                 source_distance_cats = DIST_CAT[-3],
+                                 source_trips = diff_trips[5]*-1)
+
+    redistribute_trips <- rbind(c2b_trips, c2bb_trips, c2w_trips,
+                                m2w_trips[,-ncol(m2w_trips)],
+                                t2w_trips[,-ncol(t2w_trips)])
 
     # Update selected rows for mode and duration
     rdr$trip_mode[match(redistribute_trips$id, rdr$id)] <- redistribute_trips$trip_mode
@@ -1335,8 +1322,8 @@ create_all_scenarios <- function(trip_set){
     rdr_full$scenario <- "Scenario 8"
     rd_list[[9]] <- rdr_full
 
-    rm(rdr_full, rdr, tt, new_trips, diff_trips, w2b_trips, t2b_trips,
-       remaining_t, rdr2, rdr3, t2bb_trips, c2bb_trips, remaining_c, c2m_trips,
+    rm(rdr_full, rdr, tt, new_trips, diff_trips, c2b_trips, c2bb_trips,
+       c2w_trips, m2w_trips, t2w_trips, remaining_c, rdr2, rdr3, rdr4,
        redistribute_trips, source_modes, target_modes)
 
     ###############################################################
@@ -1354,12 +1341,12 @@ create_all_scenarios <- function(trip_set){
 
     # Define new proportions
     # This is the order of proportions: bicycle, bus, car, motorcycle, taxi, walk
-    new_trips <- round(tt * c(0.07723064731358,
-                              0.41256287247163,
-                              0.14627865732676,
-                              0.05456273365251,
-                              0.04692306386493,
-                              0.26244202537059))
+    new_trips <- round(tt * c(0.05606484443955,
+                              0.33138259403709,
+                              0.14189691819549,
+                              0.04092845252417,
+                              0.04406968067042,
+                              0.38565751013329))
 
     # Difference of trips between baseline and scenario 7
     diff_trips <- new_trips - table(rdr$trip_mode)
@@ -1368,82 +1355,69 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
               (limitacion == 0))
 
-    # Redistribution of walking trips to bicycle on short distance
-    source_modes <- c('walking')
+    # Redistribution of motorcycle trips to bicycle on short and medium distance
+    source_modes <- c('motorcycle')
     target_modes <- c('bicycle')
-    w2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 9',
+    m2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 9',
                             source_modes = source_modes,
                             combined_modes = T,
                             target_modes = target_modes,
-                            source_distance_cats = DIST_CAT[1],
-                            source_trips = (diff_trips[6] + diff_trips[2])*-1)
+                            source_distance_cats = DIST_CAT[-3],
+                            source_trips = diff_trips[4]*-1)
 
-
-    # Redistribution of walking trips to bus on any distance
-    source_modes <- c('walking')
-    target_modes <- c('bus')
-    # bus trips shouldnt be the same as those chosen to be bicycle
-    rdr3 <- rdr[-match(w2bb_trips$id,rdr$id),]
-
-    w2b_trips <- create_scenario(rdr3, scen_name = 'Scenario 9',
-                                 source_modes = source_modes,
-                                 combined_modes = T,
-                                 target_modes = target_modes,
-                                 source_distance_cats = DIST_CAT,
-                                 source_trips = diff_trips[2])
-
-    # Redistribution of car trips to bicycle on short and medium distance
-    source_modes <- c('car')
+    # Redistribution of taxi trips to bicycle on short and medium distance
+    source_modes <- c('taxi')
     target_modes <- c('bicycle')
-    remaining_b <- diff_trips[1] - (diff_trips[6] + diff_trips[2])*-1
-
-    # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
-              (age >= 16 & age <= 62) &
-              (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
-              strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
-              (limitacion == 0))
-
-    c2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 9',
+    t2bb_trips <- create_scenario(rdr2, scen_name = 'Scenario 9',
                                   source_modes = source_modes,
                                   combined_modes = T,
                                   target_modes = target_modes,
                                   source_distance_cats = DIST_CAT[-3],
-                                  source_trips = remaining_b)
+                                  source_trips = diff_trips[1] + diff_trips[4])
 
-    # Redistribution of car trips to motorcycle on any distance
-    source_modes <- c('car')
-    target_modes <- c('motorcycle')
-
-    # motorcycle trips shouldnt be the same as those chosen to be bicycle
-    rdr3 <- rdr[-match(c2bb_trips$id,rdr$id),]
-
-    c2m_trips <- create_scenario(rdr3, scen_name = 'Scenario 9',
-                                source_modes = source_modes,
-                                combined_modes = T,
-                                target_modes = target_modes,
-                                source_distance_cats = DIST_CAT,
-                                source_trips = (diff_trips[3] + remaining_b)*-1)
-
-    # Redistribution of taxi trips to motorcycle on any distance
+    # Redistribution of taxi trips to bus on any distance
     source_modes <- c('taxi')
-    target_modes <- c('motorcycle')
+    target_modes <- c('bus')
+    remaining_t <- (diff_trips[5] + diff_trips[1] + diff_trips[4])*-1
+    # bus trips shouldnt be the same as those chosen to be bicycle
+    rdr3 <- rdr[-match(t2bb_trips$id,rdr$id),]
+    t2b_trips <- create_scenario(rdr3, scen_name = 'Scenario 9',
+                                  source_modes = source_modes,
+                                  combined_modes = T,
+                                  target_modes = target_modes,
+                                  source_distance_cats = DIST_CAT,
+                                  source_trips = remaining_t)
 
-    t2m_trips <- create_scenario(rdr, scen_name = 'Scenario 9',
+    # Redistribution of car trips to walking on short distance
+    source_modes <- c('car')
+    target_modes <- c('walking')
+    c2w_trips <- create_scenario(rdr, scen_name = 'Scenario 9',
                                  source_modes = source_modes,
                                  combined_modes = T,
                                  target_modes = target_modes,
-                                 source_distance_cats = DIST_CAT,
-                                 source_trips = diff_trips[5]*-1)
+                                 source_distance_cats = DIST_CAT[1],
+                                 source_trips = diff_trips[6])
 
-    redistribute_trips <- rbind(w2bb_trips, w2b_trips, c2bb_trips, c2m_trips,
-                                t2m_trips)
+    # Redistribution of car trips to bus on any distance
+    source_modes <- c('car')
+    target_modes <- c('bus')
+    # bus trips shouldnt be the same as those chosen to be walking
+    rdr4 <- rdr[-match(c2w_trips$id,rdr$id),]
+    c2b_trips <- create_scenario(rdr4, scen_name = 'Scenario 9',
+                          source_modes = source_modes,
+                          combined_modes = T,
+                          target_modes = target_modes,
+                          source_distance_cats = DIST_CAT,
+                          source_trips = (diff_trips[3] + diff_trips[6])*-1)
+
+    redistribute_trips <- rbind(c2w_trips, c2b_trips, t2b_trips, t2bb_trips,
+                                m2bb_trips)
 
     # Update selected rows for mode and duration
     rdr$trip_mode[match(redistribute_trips$id, rdr$id)] <- redistribute_trips$trip_mode
@@ -1456,8 +1430,8 @@ create_all_scenarios <- function(trip_set){
     rdr_full$scenario <- "Scenario 9"
     rd_list[[10]] <- rdr_full
 
-    rm(rdr_full, rdr, tt, new_trips, diff_trips, rdr2, w2bb_trips, rdr3,
-       w2b_trips, remaining_b, c2bb_trips, c2m_trips, t2m_trips,
+    rm(rdr_full, rdr, tt, new_trips, diff_trips, c2w_trips, c2b_trips,
+       t2b_trips, t2bb_trips, rdr2, rdr3, rdr4, remaining_t, m2bb_trips,
        redistribute_trips, source_modes, target_modes)
 
     ###############################################################
@@ -1489,7 +1463,7 @@ create_all_scenarios <- function(trip_set){
     rdr$id <- 1:nrow(rdr)
 
     # Subset dataset with restrictions
-    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8,10)) &
+    rdr2 <- subset(rdr, !(motivo %in% c(4,7,8)) &
               (age >= 16 & age <= 62) &
               (strptime(hora_inicio, "%H:%M") >= strptime("05:30", "%H:%M") &
               strptime(hora_inicio, "%H:%M") <= strptime("23:30", "%H:%M")) &
